@@ -1,0 +1,398 @@
+/* PALETA DE COLORES */
+:root {
+    --dark-blue: #070b16;
+    --mid-blue: #254fa4;
+    --light-blue: #5a87d6;
+    --green: #18a11b;
+    --red: #ed3535;
+    --black: #18181b;
+    --white: #f7f7f8;
+}
+
+/* ESTILOS GENERALES DE LA APP */
+* {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: 16px 'Barlow', sans-serif;
+    background-color: transparent;
+    color: var(--white);
+    text-decoration: none;
+    list-style: none;
+}
+
+/* BG DEL BODY */
+body {
+    background-color: var(--black);
+}
+
+/* ESTILOS DEL MAIN */
+.main-container {
+    width: 100vw;
+}
+
+/* ESTILOS DEL HEADER Y NAV */
+.header {
+    width: 100vw;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-blue);
+}
+
+.header-title {
+    width: 40%;
+    font: 3em 'Alfa Slab One', sans-serif;
+    color: var(--light-blue);
+}
+
+.nav {
+    width: 50%;
+}
+
+.nav-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+}
+
+.nav-list-item a {
+    font: italic 1.5em 'Barlow', sans-serif;
+    color: var(--mid-blue);
+}
+
+.logout a {
+    color: var(--red);
+}
+
+/* ESTILOS DE PRODUCTCARDS */
+.card-container {
+    width: 90%;
+    margin: 2em auto 3em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+}
+
+.card {
+    width: 30%;
+    height: 400px;
+    background-color: var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px var(--light-blue);
+}
+
+.card-header {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-title {
+    position: absolute;
+    bottom: 0;
+    margin: .5em 1em;
+    font: 1.5em 'Alfa Slab One', sans-serif;
+    color: var(--dark-blue);
+}
+
+.card-body {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--black);
+}
+
+.card-desc {
+    width: 100%;
+    height: 50%;
+    padding: 1em;
+    color: var(--dark-blue);
+}
+
+.card-price {
+    height: 50%;
+    padding: 1em;
+    width: 50%;
+    background-color: var(--dark-blue);
+}
+
+.card-cat {
+    height: 50%;
+    padding: 1em;
+    width: 50%;
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+}
+
+.card-data {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card-stock {
+    width: 50%;
+    height: 100%;
+    background-color: var(--black);
+    color: var(--light-blue);
+    text-align: center;
+    padding: 1em;
+}
+
+.card-link-detail {
+    width: 50%;
+    height: 100%;
+    background-color: var(--black);
+    text-align: center;
+    padding: 1em;
+}
+
+/* ESTILOS DE PRODUCTDETAIL */
+.card-detail-container {
+    width: 70%;
+    height: 50vh;
+    margin: 2em auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: start;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px var(--light-blue);
+    overflow: hidden;
+}
+
+.card-detail-header {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: var(--white);
+}
+
+.card-detail-title {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: .5em;
+    font: 2em 'Alfa Slab One', sans-serif;
+    color: var(--black);
+}
+
+.card-detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-detail-body {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: start;
+}
+
+.card-detail-desc, .card-detail-stock {
+    width: 100%;
+    padding: 1em;
+    color: var(--light-blue);
+    font-style: italic;
+}
+
+.card-detail-price, .card-detail-cat {
+    background-color: var(--mid-blue);
+    width: 50%;
+    padding: 1em;
+    text-align: center;
+}
+
+.card-detail-cat {
+    background-color: var(--dark-blue);
+}
+
+.card-detail-link {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    background-color: var(--light-blue);
+    color: var(--black);
+    font-weight: bold;
+}
+
+/* ESTILOS DE PRODUCTLIST */
+.table-list-container {
+    width: 90%;
+    margin: 2em auto;
+    padding: 1em;
+}
+
+.table-title {
+    margin: 1em;
+    font: 2em 'Alfa Slab One', sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table-head {
+    background-color: var(--dark-blue);
+}
+
+.table-head-row th {    
+    font-weight: bold;
+}
+
+.table-head-row th, .table-body-row td {
+    width: 10%;
+    padding: 1em;
+    text-align: center;
+}
+
+.table-body {
+    background-color: var(--white);
+}
+
+.table-body-row td {
+    color: var(--black);
+}
+
+.table-img {
+    object-fit: scale-down;
+}
+
+.add-product-btn, .edit-product-btn, .delete-product-btn, .add-category-btn, .edit-category-btn, .delete-category-btn {
+    width: 30%;
+    padding: .5em;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--light-blue);
+    font-weight: bold;
+    text-align: center;
+}
+
+.add-btn-container {
+    width: 100%;
+    padding: 1em;
+}
+
+.add-product-btn, .add-category-btn {
+    background-color: var(--green);
+}
+
+.delete-product-btn, .delete-category-btn {
+    background-color: var(--red);
+}
+
+/* ESTILOS DEL LOGIN */
+.login-page-container, .product-page-container, .category-page-container {
+    width: 80%;
+    padding: 1em;
+    margin: 1em auto;
+}
+
+.login-page-title, .product-page-title, .category-page-title {
+    margin: 1em;
+    font: 2em 'Alfa Slab One', sans-serif;
+}
+
+.form-container, .form-container-product, .form-container-category {
+    width: 60%;
+    height: 60vh;
+    margin: auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+.form-container-product {
+    height: 80vh;
+    margin: 2em auto;
+}
+
+.form-container-category {
+    height: 30vh;
+}
+
+.form-input-container {
+    width: 90%;
+    margin: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-input-container label {
+    width: 30%;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.form-input-container input, .form-input-container select, .form-input-container textarea {
+    width: 70%;
+    padding: .5em;
+    color: var(--black);
+    border: 1px solid var(--dark-blue);
+    border-radius: 5px;
+}
+
+.form-input-container select {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: 1px solid var(--light-blue);
+    border-radius: 5px;
+}
+
+.form-btn {
+    width: 30%;
+    padding: .5em;
+    color: var(--light-blue);
+    background-color: var(--black);
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+}
+
+/* ESTILOS DEL FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    padding: .5em;
+    background-color: var(--dark-blue);
+}
+
+.footer-text {
+    margin: auto;
+    color: var(--white);
+    font-weight: bold;
+    font-style: italic;
+}
