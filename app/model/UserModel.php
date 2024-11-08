@@ -9,7 +9,16 @@ class UserModel extends Model{
         return $user->fetch(PDO::FETCH_OBJ);
     }
 
-    function addUser($email, $pass){}
+    function addUser($email, $pass){
+        $query = "INSERT INTO `users` (`email`, `pass`) VALUES (?, ?)";
+        $this->executeQuery($query, [$email, $pass]);
+    }
 
-    public function validateUser($email, $pass){}
+    public function validateUser($email, $pass){
+        $user = $this->getUserByEmail($email);
+        if($user && password_verify($pass, $user->pass)){
+            return $user;
+        }
+        return null;
+    }
 }
