@@ -61,6 +61,14 @@ switch ($param[0]){
         // valida el login
         $authController->authenticate();
         break;
+    case 'register':
+        // agrega nuevo usuario y loguea
+        $authController->register();
+        break;
+        case 'registeruser':
+        // muestra form de registro de usuario
+        $authController->registerForm();
+        break;
     case 'category':
         if(isset($param[1])){
             switch($param[1]){
