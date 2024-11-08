@@ -1,12 +1,12 @@
 /* PALETA DE COLORES */
 :root {
-    --dark-blue: #070b16;
-    --mid-blue: #254fa4;
-    --light-blue: #5a87d6;
-    --green: #18a11b;
-    --red: #ed3535;
-    --black: #18181b;
-    --white: #f7f7f8;
+    --dark-green: #0f5820;
+    --mid-green: #0bae2c;
+    --light-green: #55ec73;
+    --black: #060606;
+    --mid-black: #161616;
+    --white: #f6f6f6;
+    --red: #ef4848;
 }
 
 /* ESTILOS GENERALES DE LA APP */
@@ -16,7 +16,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font: 16px 'Barlow', sans-serif;
+    font: 16px 'Raleway', sans-serif;
     background-color: transparent;
     color: var(--white);
     text-decoration: none;
@@ -25,7 +25,7 @@
 
 /* BG DEL BODY */
 body {
-    background-color: var(--black);
+    background-color: var(--white);
 }
 
 /* ESTILOS DEL MAIN */
@@ -40,13 +40,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--dark-blue);
+    background-color: var(--mid-black);
 }
 
 .header-title {
     width: 40%;
-    font: 3em 'Alfa Slab One', sans-serif;
-    color: var(--light-blue);
+    font: bold 3em 'Oswald', sans-serif;
+    color: var(--white);
+    text-shadow: 0px 0px 10px var(--light-green);
 }
 
 .nav {
@@ -62,8 +63,8 @@ body {
 }
 
 .nav-list-item a {
-    font: italic 1.5em 'Barlow', sans-serif;
-    color: var(--mid-blue);
+    font: italic 1.3em 'Oswald', sans-serif;
+    color: var(--light-green);
 }
 
 .logout a {
@@ -82,108 +83,103 @@ body {
 }
 
 .card {
-    width: 30%;
-    height: 400px;
-    background-color: var(--white);
-    border-radius: 5px;
+    width: 25%;
+    height: 350px;
+    box-shadow: 0px 0px 5px var(--mid-black);
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 0px 5px var(--light-blue);
 }
 
 .card-header {
     position: relative;
-    width: 100%;
     height: 50%;
+    width: 100%;
 }
 
 .card-img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
+    width: 100%;
+    height: 80%;
 }
 
 .card-title {
+    width: 100%;
     position: absolute;
     bottom: 0;
-    margin: .5em 1em;
-    font: 1.5em 'Alfa Slab One', sans-serif;
-    color: var(--dark-blue);
+    padding: .5em;
+    font: 1.3em 'Oswald', sans-serif;
+    color: var(--light-green);
+    background-color: var(--mid-black);
 }
 
 .card-body {
-    width: 100%;
-    height: 35%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-    color: var(--black);
+    width: 100%;
+    height: 35%;
+    background-color: var(--mid-black);
 }
 
 .card-desc {
     width: 100%;
-    height: 50%;
-    padding: 1em;
-    color: var(--dark-blue);
+    padding: 0 1em;
 }
 
 .card-price {
-    height: 50%;
-    padding: 1em;
-    width: 50%;
-    background-color: var(--dark-blue);
+    width: 40%;
+    padding: 0 1em;
+    font-weight: bold;
 }
 
 .card-cat {
-    height: 50%;
-    padding: 1em;
-    width: 50%;
-    color: var(--dark-blue);
-    background-color: var(--light-blue);
+    width: 60%;
+    padding: 0 1em;
 }
 
 .card-data {
-    width: 100%;
-    height: 20%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-wrap: wrap;
+    height: 15%;
+    width: 100%;
+    background-color: var(--mid-black);
 }
 
 .card-stock {
+    padding: .5em;
     width: 50%;
-    height: 100%;
-    background-color: var(--black);
-    color: var(--light-blue);
     text-align: center;
-    padding: 1em;
+    align-content: center;
+    color: var(--mid-green);
+}
+
+.nodisp {
+    color: var(--red);
 }
 
 .card-link-detail {
     width: 50%;
-    height: 100%;
-    background-color: var(--black);
-    text-align: center;
     padding: 1em;
+    background-color: var(--dark-green);
+    text-align: center;
 }
 
 /* ESTILOS DE PRODUCTDETAIL */
 .card-detail-container {
-    width: 70%;
-    height: 50vh;
+    width: 60%;
+    height: 70vh;
     margin: 2em auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: start;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px var(--light-blue);
+    box-shadow: 0px 0px 10px var(--mid-black);
     overflow: hidden;
 }
 
 .card-detail-header {
     position: relative;
-    width: 50%;
+    width: 60%;
     height: 100%;
     background-color: var(--white);
 }
@@ -193,40 +189,55 @@ body {
     position: absolute;
     bottom: 0;
     padding: .5em;
-    font: 2em 'Alfa Slab One', sans-serif;
-    color: var(--black);
+    font: 2em 'Oswald', sans-serif;
+    color: var(--light-green);
+    background-color: var(--mid-black);
 }
 
 .card-detail-img {
     width: 100%;
-    height: 100%;
+    height: 90%;
     object-fit: contain;
 }
 
 .card-detail-body {
     position: relative;
-    width: 50%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-flow: row wrap;
     align-items: start;
+    background-color: var(--mid-black);
 }
 
-.card-detail-desc, .card-detail-stock {
+.card-detail-desc {
     width: 100%;
+    height: 40%;
     padding: 1em;
-    color: var(--light-blue);
+    color: var(--white);
     font-style: italic;
 }
 
+.card-detail-stock {
+    color: var(--mid-green);
+    padding: 1em;
+    height: 20%;
+    width: 100%;
+    text-align: center;
+}
+
 .card-detail-price, .card-detail-cat {
-    background-color: var(--mid-blue);
-    width: 50%;
+    width: 40%;
     padding: 1em;
     text-align: center;
 }
 
+.card-detail-price {
+    font-weight: bold;
+}
+
 .card-detail-cat {
+    width: 60%;
     background-color: var(--dark-blue);
 }
 
@@ -235,9 +246,9 @@ body {
     bottom: 0;
     width: 100%;
     padding: 1em;
-    background-color: var(--light-blue);
-    color: var(--black);
+    color: var(--white);
     font-weight: bold;
+    text-align: center;
 }
 
 /* ESTILOS DE PRODUCTLIST */
@@ -249,7 +260,8 @@ body {
 
 .table-title {
     margin: 1em;
-    font: 2em 'Alfa Slab One', sans-serif;
+    font: 2em 'Oswald', sans-serif;
+    color: var(--mid-black);
 }
 
 .table {
@@ -259,7 +271,7 @@ body {
 }
 
 .table-head {
-    background-color: var(--dark-blue);
+    background-color: var(--dark-green);
 }
 
 .table-head-row th {    
@@ -267,20 +279,25 @@ body {
 }
 
 .table-head-row th, .table-body-row td {
-    width: 10%;
+    max-width: 10%;
     padding: 1em;
     text-align: center;
 }
 
+.table-head-row th:nth-child(2), .table-body-row td:nth-child(2) {
+    max-width: 200px;
+}
+
 .table-body {
-    background-color: var(--white);
+    background-color: var(--mid-black);
 }
 
 .table-body-row td {
-    color: var(--black);
+    color: var(--white);
 }
 
 .table-img {
+    max-width: 100px;
     object-fit: scale-down;
 }
 
@@ -289,7 +306,7 @@ body {
     padding: .5em;
     border-radius: 5px;
     border: none;
-    background-color: var(--light-blue);
+    background-color: var(--mid-green);
     font-weight: bold;
     text-align: center;
 }
@@ -300,7 +317,7 @@ body {
 }
 
 .add-product-btn, .add-category-btn {
-    background-color: var(--green);
+    background-color: var(--mid-green);
 }
 
 .delete-product-btn, .delete-category-btn {
@@ -316,7 +333,8 @@ body {
 
 .login-page-title, .product-page-title, .category-page-title {
     margin: 1em;
-    font: 2em 'Alfa Slab One', sans-serif;
+    font: 2em 'Oswald', sans-serif;
+    color: var(--mid-black);
 }
 
 .form-container, .form-container-product, .form-container-category {
@@ -328,12 +346,12 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--white);
+    background-color: var(--mid-black);
     border-radius: 5px;
 }
 
 .form-container-product {
-    height: 80vh;
+    height: 120vh;
     margin: 2em auto;
 }
 
@@ -352,33 +370,41 @@ body {
 
 .form-input-container label {
     width: 30%;
-    color: var(--black);
+    color: var(--white);
     font-weight: bold;
 }
 
 .form-input-container input, .form-input-container select, .form-input-container textarea {
     width: 70%;
     padding: .5em;
-    color: var(--black);
-    border: 1px solid var(--dark-blue);
+    color: var(--white);
+    border: 1px solid var(--white);
     border-radius: 5px;
 }
 
 .form-input-container select {
-    background-color: var(--dark-blue);
+    background-color: var(--mid-black);
     color: var(--white);
-    border: 1px solid var(--light-blue);
+    border: 1px solid var(--light-green);
     border-radius: 5px;
 }
 
 .form-btn {
     width: 30%;
     padding: .5em;
-    color: var(--light-blue);
-    background-color: var(--black);
+    color: var(--mid-black);
+    background-color: var(--white);
     font-weight: bold;
     border-radius: 5px;
     border: none;
+}
+
+.form-imgproduct-view {
+    width: 50%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 /* ESTILOS DEL FOOTER */
@@ -387,12 +413,11 @@ body {
     bottom: 0;
     width: 100vw;
     padding: .5em;
-    background-color: var(--dark-blue);
+    background-color: var(--mid-black);
 }
 
 .footer-text {
     margin: auto;
     color: var(--white);
-    font-weight: bold;
     font-style: italic;
 }
