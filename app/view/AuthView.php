@@ -7,4 +7,9 @@ class AuthView extends View{
         $this->smarty->assign('Error', $error);
         $this->smarty->display('auth/loginForm.tpl');
     }
+
+    function showRegisterForm($error = null){
+        $this->smarty->assign('Error', $error);
+        $this->smarty->display('auth/registerForm.tpl');
+    }
 }
