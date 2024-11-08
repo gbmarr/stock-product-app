@@ -2,6 +2,12 @@
 require_once 'Model.php';
 
 class ProductModel extends Model{
+    private $IMGDEFAULT;
+
+    public function __construct() {
+        parent::__construct();
+        $this->IMGDEFAULT = "images/imagenPorDefault.jpg";
+    }
 
     function getAllProducts(){
         $query = "SELECT `idproduct`, P.`name`, `description`, P.`idcategory`, C.`idcat`, C.`name` catdescription, `price`, `stock`, `imgproduct` FROM `products` P, `categories` C WHERE `idcategory` = `idcat`";
@@ -16,11 +22,21 @@ class ProductModel extends Model{
     }
 
     function addProduct($name, $desc, $idcat, $price, $stock, $imgproduct){
+        
+        if($imgproduct == NULL){
+            $imgproduct = $this->IMGDEFAULT;
+        }
+        
         $query = "INSERT INTO `products` (`name`, `description`, `idcategory`, `price`, `stock`, `imgproduct`) VALUES (?, ?, ?, ?, ?, ?)";
         $this->executeQuery($query, [$name, $desc, $idcat, $price, $stock, $imgproduct]);
     }
 
     function updateProduct($id, $name, $desc, $idcat, $price, $stock, $imgproduct){
+        
+        if($imgproduct == NULL){
+            $imgproduct = $this->IMGDEFAULT;
+        }
+
         $query = "UPDATE `products` SET `name` = ?, `description` = ?, `idcategory` = ?, `price` = ?, `stock` = ?, `imgproduct` = ? WHERE `idproduct` = ?";
         $this->executeQuery($query, [$name, $desc, $idcat, $price, $stock, $imgproduct, $id]);
     }
