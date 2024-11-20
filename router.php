@@ -33,21 +33,21 @@ switch ($param[0]){
     case 'edit':
         // muestra form para editar producto existente
         $id = isset($param[1]) ? $param[1] : 0;
-        isset($id) ? $productController->editProduct($id) : $productController->errorProduct();
+        isset($id) ? $productController->editProduct($id) : $productController->errorProduct("El producto seleccionado no existe.");
         break;
     case 'update':
         // actualiza el producto editado
         $id = isset($param[1]) ? $param[1] : 0;
-        isset($id) ? $productController->updateProduct($id) : $productController->errorProduct();
+        isset($id) ? $productController->updateProduct($id) : $productController->errorProduct("Error al actualizar el producto, verifique si el mismo existe.");
         break;
     case 'detail':
         // muestra vista de un solo producto
         $id = isset($param[1]) ? $param[1] : null;
-        $id ? $productController->detailProduct($param[1]) : $productController->errorProduct();
+        isset($id) ? $productController->detailProduct($param[1]) : $productController->errorProduct("El detalle no puede ser mostrado ya que el producto no existe.");
         break;
     case 'delete':
         // elimina un producto existente
-        isset($param[1]) ? $productController->deleteProduct($param[1]) : $productController->errorProduct();
+        isset($param[1]) ? $productController->deleteProduct($param[1]) : $productController->errorProduct("El producto a eliminar no existe, verifique si se encuentra dentro de la lista de productos.");
         break;
     case 'login':
         // muestra form de inicio de sesión
@@ -65,10 +65,6 @@ switch ($param[0]){
         // agrega nuevo usuario y loguea
         $authController->register();
         break;
-        case 'registeruser':
-        // muestra form de registro de usuario
-        $authController->registerForm();
-        break;
     case 'category':
         if(isset($param[1])){
             switch($param[1]){
@@ -82,15 +78,15 @@ switch ($param[0]){
                     break;
                 case 'edit':
                     // redirige a form para editar categoria existente
-                    isset($param[2]) ? $categoryController->editCategory($param[2]) : $categoryController->errorCategory();
+                    isset($param[2]) ? $categoryController->editCategory($param[2]) : $categoryController->errorCategory("La categoría a editar no existe, verifique nuevamente en su lista de categorías.");
                     break;
                 case 'update':
                     // guarda cambios efectuados en categoria existente
-                    isset($param[2]) ? $categoryController->updateCategory($param[2]) : $categoryController->errorCategory();
+                    isset($param[2]) ? $categoryController->updateCategory($param[2]) : $categoryController->errorCategory("La categoría a actualizar no existe, verifique nuevamente en su lista de categorías.");
                     break;
                 case 'delete':
                     // elimina categoria
-                    isset($param[2]) ? $categoryController->deleteCategory($param[2]) : $categoryController->errorCategory();
+                    isset($param[2]) ? $categoryController->deleteCategory($param[2]) : $categoryController->errorCategory("La categoría a eliminar no existe, verifique nuevamente en su lista de categorías.");
                     break;
                 default:
                 // muestra todas las categorias
