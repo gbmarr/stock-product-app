@@ -20,50 +20,43 @@ class AuthController{
     }
 
     function authenticate(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])){
             $email = $_POST['email'];
             $pass = $_POST['password'];
-            if(!empty($email) && !empty($pass)){
-                $user = $this->user->validateUser($email, $pass);
-                // $user = $this->user->getUserByEmail($email);
-                if($user){
-                    $this->chargeSession($user);
-                    //$_SESSION['user_id'] = $user->id;
-                    //$_SESSION['user'] = $user;
-                    //$_SESSION['email'] = $user->email;
-                    //$_SESSION['admin'] = $user->admin;
-                    header('Location: ' . BASE_URL . '/home');
-                }else{
-                    $this->view->showRegisterForm('Invalid email or password');
-                }
+            
+            $user = $this->user->validateUser($email, $pass);
+            if($user){
+                $this->chargeSession($user);
+                header('Location: ' . BASE_URL . '/home');
             }else{
-                $this->view->showLoginForm('Data empty');
+                $this->authError("Verifique sus datos e intentelo nuevamente. De persistir el error, pruebe registrandose.");
             }
         }else{
-            $this->view->showLoginForm('No POST method');
+            $this->view->showLoginForm();
         }
     }
 
     function register(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])){
             $email = $_POST['email'];
-            $pass = $_POST['password'];
-            if(!empty($email) && !empty($pass)){
+            $pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            $userExist = $this->user->getUserByEmail($email);
+            if(!isset($userExist)){
                 $this->user->addUser($email, $pass);
-
                 $newUser = $this->user->getUserByEmail($email);
+
                 $this->chargeSession($newUser);
-                header('Location: ' . BASE_URL . '/home');
+                header('Location: ' . BASE_URL . '/');
             }else{
-                $this->view->showRegisterForm('Data empty');
+                $this->authError("El email utilizado ya posee una cuenta, intente con un email diferente.");
             }
         }else{
-            $this->view->showRegisterForm('No POST method');
+            $this->view->showRegisterForm('Data empty');
         }
     }
 
     function checkAdmin(){
-        if(!isset($_SESSION['user']) || !($_SESSION['user']->admin)){
+        if(!isset($_SESSION['admin']) || $_SESSION['admin'] == false){
             header('Location: ' . BASE_URL . '/');
         }
     }
@@ -77,8 +70,15 @@ class AuthController{
 
     function chargeSession(Object $user){
         $_SESSION['user_id'] = $user->id;
-        $_SESSION['user'] = $user;
         $_SESSION['email'] = $user->email;
         $_SESSION['admin'] = $user->admin;
+    }
+
+    function isAdmin(){
+        return isset($_SESSION['admin']) && $_SESSION['admin'] == true;
+    }
+
+    function authError(String $error){
+        $this->view->showError($error);
     }
 }
