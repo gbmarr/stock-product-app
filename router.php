@@ -61,6 +61,10 @@ switch ($param[0]){
         // valida el login
         $authController->authenticate();
         break;
+    case 'newuser':
+        // muestra form para crear nuevo usuario
+        $authController->registerForm();
+        break;
     case 'register':
         // agrega nuevo usuario y loguea
         $authController->register();
