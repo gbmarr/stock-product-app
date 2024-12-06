@@ -1,14 +1,17 @@
 <?php
 require_once 'app/model/CategoryModel.php';
+require_once 'app/model/ProductModel.php';
 require_once 'app/view/CategoryView.php';
 require_once 'app/controller/AuthController.php';
 
 class CategoryController extends AuthController{
     private $categoryModel;
+    private $productModel;
     private $categoryView;
 
     function __construct(){
         $this->categoryModel = new CategoryModel();
+        $this->productModel = new ProductModel();
         $this->categoryView = new CategoryView();
     }
 
@@ -38,7 +41,19 @@ class CategoryController extends AuthController{
         $this->checkAdmin();
         $categoryName = $_POST['catname'];
         if(!empty($categoryName)){
-            $this->categoryModel->addCategory($categoryName);
+            if($_FILES['catimage']['type'] == "image/jpg"
+            || $_FILES['catimage']['type'] == "image/jpeg"
+            || $_FILES['catimage']['type'] == "image/png"){
+                $imagen = $_FILES['catimage']['name'];
+                $tmp_name = $_FILES['catimage']['tmp_name'];
+                $path = "images/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['catimage']['name'], PATHINFO_EXTENSION));
+    
+                if(move_uploaded_file($tmp_name, $path)){
+                    $this->categoryModel->addCategory($categoryName, $path);
+                }
+            }else{
+                $this->categoryModel->addCategory($categoryName, NULL);
+            }
             header('Location: ' . BASE_URL . '/category');
         }else{
             $storeError = "La nueva categoría no puede guardar un valor vacío, regrese e intente con nuevos datos.";
@@ -53,7 +68,7 @@ class CategoryController extends AuthController{
     no existente, muestra pantalla de error con mensaje. */
     function editCategory($id){
         $this->checkAdmin();
-        $category = $this->categoryModel->getCategoriyByID($id);
+        $category = $this->categoryModel->getCategoryByID($id);
         if(isset($category) && $category != null){
             $this->categoryView->showCategoryForm($category);
         }else{
@@ -70,10 +85,32 @@ class CategoryController extends AuthController{
     de error y mantiene los datos anteriores en la categoria. */
     function updateCategory($id){
         $this->checkAdmin();
-        $idcat = intval($id);
+
         $categoryName = $_POST['catname'];
+        
+        $category = $this->categoryModel->getCategoryByID($id);
+
         if(!empty($categoryName)){
-            $this->categoryModel->updateCategory($idcat, $categoryName);
+            if($_FILES['catimage']['type'] == "image/jpg"
+            || $_FILES['catimage']['type'] == "image/jpeg"
+            || $_FILES['catimage']['type'] == "image/png"){
+                $tmp_name = $_FILES['catimage']['tmp_name'];
+                $path = "images/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['catimage']['name'], PATHINFO_EXTENSION));                
+                
+                if(move_uploaded_file($tmp_name, $path)){
+                    $this->categoryModel->updateCategory($id, $categoryName, $path);
+                    header('Location: ' . BASE_URL . '/category');
+                }else{
+                    $updateError = "Error al subir imagen de la categoría.";
+                    $this->errorCategory($updateError);
+                }
+            }else if($category->catimage != null){
+                $this->categoryModel->updateCategory($id, $categoryName, $category->catimage);
+                header('Location: ' . BASE_URL . '/category');
+            }else{
+                $this->categoryModel->updateCategory($id, $categoryName, null);
+                header('Location: ' . BASE_URL . '/category');
+            }
             header('Location: ' . BASE_URL . '/category');
         }else{
             $updateError = "La categoría a actualizar no puede guardar un valor vacío, regrese en intente con nuevos datos.";
@@ -88,9 +125,16 @@ class CategoryController extends AuthController{
     En caso de no coincidir muestra pantalla de error. */
     function deleteCategory($id){
         $this->checkAdmin();
-        $category = $this->categoryModel->getCategoriyByID($id);
-        if(isset($category) && $category != null){
-            $this->categoryModel->deleteCategory($id);
+        $category = $this->categoryModel->getCategoryByID($id);
+        if($category){
+            $products = $this->productModel->getProductsByCategoryID($category->idcat);
+            if(count($products) > 0){
+                foreach($products as $product){
+                    $this->productModel->updateProductCategory($product->idproduct);
+                }
+            }
+            
+            $this->categoryModel->deleteCategory($category->idcat);
             header('Location: ' . BASE_URL . '/');
         }else{
             $deleteError = "La categoría a eliminar no existe, por favor verifique los datos nuevamente.";
