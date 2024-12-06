@@ -4,14 +4,14 @@ USE webii_productstpe;
 /* Tabla categories */
 CREATE TABLE IF NOT EXISTS categories (
     idcat INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    catname VARCHAR(50) NOT NULL,
     catimage VARCHAR(350)
 );
 
 /* Tabla products */
 CREATE TABLE IF NOT EXISTS products (
     idproduct INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    prodname VARCHAR(50) NOT NULL,
     description VARCHAR(200) NOT NULL,
     idcategory INT,
     stock BOOLEAN NOT NULL,
@@ -27,5 +27,6 @@ CREATE TABLE IF NOT EXISTS users (
     surname VARCHAR(30) NOT NULL,
     email VARCHAR(50) NOT NULL,
     pass VARCHAR(150) NOT NULL,
+    token VARCHAR(150) NOT NULL,
     admin BOOLEAN NOT NULL
 );
