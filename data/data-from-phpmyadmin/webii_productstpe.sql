@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2024 a las 16:59:19
+-- Tiempo de generación: 09-12-2024 a las 18:12:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`idcat`, `catname`, `catimage`) VALUES
 (1, 'Sin categoría asignada', 'images/imagenPorDefault.jpg'),
-(2, 'Electrónicas', 'images/imagenPorDefault.jpg'),
+(2, 'Electrónica', 'images/imagenPorDefault.jpg'),
 (3, 'Ropa', 'images/imagenPorDefault.jpg'),
 (4, 'Hogar', 'images/imagenPorDefault.jpg');
 
@@ -64,7 +64,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`idproduct`, `prodname`, `description`, `idcategory`, `stock`, `price`, `imgproduct`) VALUES
-(1, 'Televisor nuevo modificado', 'Televisor LED de 42 pulgadas', 2, 1, 200, 'images/img-tv.jpeg'),
+(1, 'Televisor', 'Televisor LED de 42 pulgadas', 2, 1, 200, 'images/img-tv.jpeg'),
 (2, 'Camiseta', 'Camiseta de algodón 100%', 3, 1, 30, 'images/camiseta.jpeg'),
 (3, 'Sofá', 'Sofá de 3 plazas color gris', 4, 1, 500.1, 'images/sofa.jpeg'),
 (4, 'Auriculares', 'Auriculares con cancelación de ruido', 2, 1, 1500, 'images/auriculares.jpeg');
@@ -90,7 +90,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`iduser`, `name`, `surname`, `email`, `pass`, `token`, `admin`) VALUES
-(1, 'Admin', 'User', 'admin@admin.com', '$2y$10$xHn/k/qTE8tGr1iSSe3X0OOUbkSnYGTLp7BAuIKFUAb9teWs/Ybxi', '646fc0d751c58050fb1d81ee8f455420', 1),
+(1, 'Admin', 'User', 'webadmin@admin.com', '$2y$10$11WnltIgF5IzvPCUCH6N7uuxWJyG14M4wRgS9ji6llO04Ln20aLGK', '646fc0d751c58050fb1d81ee8f455420', 1),
 (2, 'UserComun', 'Apellido', 'user@comun.com', '$2y$10$hP1MFvzm7SpV6CbZX7GQDekSTWD0GyVtR0eN2icxbLHNM.QfQ0U4a', '80da7e7ce496db405ee6b67d87bf648d', 0);
 
 --
