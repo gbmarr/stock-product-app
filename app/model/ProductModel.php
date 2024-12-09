@@ -81,8 +81,8 @@ class ProductModel extends Model{
     parametro. En caso de ser diferente a null,
     se retorna la imagen(path), en caso contrario se retorna una
     imagen por defecto(path predeterminado a otra imagen 'default'). */
-    function imgValidate(String $image){
-        if($image == null){
+    function imgValidate($image){
+        if(is_null($image) || empty($image)){
             $image = $this->IMGDEFAULT;
         }
         return $image;
