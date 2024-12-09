@@ -12,11 +12,11 @@
         {else}{BASE_URL}/category/store{/if}" method="POST">
         <div class="form-input-container">
             <label for="name">Nombre</label>
-            <input type="text" name="catname" value={$category->catname|default:""} />
+            <input type="text" name="catname" value={$category->catname|default:""} >
         </div>
         <div class="form-input-container">
             <label for="catimage">Imagen:</label>
-            <input type="file" name="catimage" id="catimage" />
+            <input type="file" name="catimage" id="catimage" >
         </div>
         {if $category}
             <div class="form-input-container">

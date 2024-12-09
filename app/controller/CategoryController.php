@@ -10,6 +10,7 @@ class CategoryController extends AuthController{
     private $categoryView;
 
     function __construct(){
+        parent::__construct();
         $this->categoryModel = new CategoryModel();
         $this->productModel = new ProductModel();
         $this->categoryView = new CategoryView();

@@ -20,7 +20,7 @@ class AuthView extends View{
     /*
     Metodo que recibe mensaje de error en formato string y despliega
     pantalla de error con mensaje de error de login/register. */
-    function showError(String $error){
+    function showError($error = null){
         $this->smarty->assign('error', $error);
         $this->smarty->display("error/error.tpl");
     }
