@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2024 a las 18:13:06
+-- Tiempo de generación: 06-12-2024 a las 16:59:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `idcat` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `catname` varchar(50) NOT NULL,
   `catimage` varchar(350) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -37,9 +37,9 @@ CREATE TABLE `categories` (
 -- Volcado de datos para la tabla `categories`
 --
 
-INSERT INTO `categories` (`idcat`, `name`, `catimage`) VALUES
+INSERT INTO `categories` (`idcat`, `catname`, `catimage`) VALUES
 (1, 'Sin categoría asignada', 'images/imagenPorDefault.jpg'),
-(2, 'Electrónica', 'images/imagenPorDefault.jpg'),
+(2, 'Electrónicas', 'images/imagenPorDefault.jpg'),
 (3, 'Ropa', 'images/imagenPorDefault.jpg'),
 (4, 'Hogar', 'images/imagenPorDefault.jpg');
 
@@ -51,7 +51,7 @@ INSERT INTO `categories` (`idcat`, `name`, `catimage`) VALUES
 
 CREATE TABLE `products` (
   `idproduct` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `prodname` varchar(50) NOT NULL,
   `description` varchar(200) NOT NULL,
   `idcategory` int(11) DEFAULT NULL,
   `stock` tinyint(1) NOT NULL,
@@ -63,8 +63,8 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`idproduct`, `name`, `description`, `idcategory`, `stock`, `price`, `imgproduct`) VALUES
-(1, 'Televisor', 'Televisor LED de 42 pulgadas', 2, 1, 200, 'images/img-tv.jpeg'),
+INSERT INTO `products` (`idproduct`, `prodname`, `description`, `idcategory`, `stock`, `price`, `imgproduct`) VALUES
+(1, 'Televisor nuevo modificado', 'Televisor LED de 42 pulgadas', 2, 1, 200, 'images/img-tv.jpeg'),
 (2, 'Camiseta', 'Camiseta de algodón 100%', 3, 1, 30, 'images/camiseta.jpeg'),
 (3, 'Sofá', 'Sofá de 3 plazas color gris', 4, 1, 500.1, 'images/sofa.jpeg'),
 (4, 'Auriculares', 'Auriculares con cancelación de ruido', 2, 1, 1500, 'images/auriculares.jpeg');
@@ -81,6 +81,7 @@ CREATE TABLE `users` (
   `surname` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `pass` varchar(150) NOT NULL,
+  `token` varchar(150) NOT NULL,
   `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -88,9 +89,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`iduser`, `name`, `surname`, `email`, `pass`, `admin`) VALUES
-(1, 'Admin', 'User', 'admin@admin.com', '$2y$10$xHn/k/qTE8tGr1iSSe3X0OOUbkSnYGTLp7BAuIKFUAb9teWs/Ybxi', 1),
-(2, 'UserComun', 'Apellido', 'user@comun.com', '$2y$10$hP1MFvzm7SpV6CbZX7GQDekSTWD0GyVtR0eN2icxbLHNM.QfQ0U4a', 0);
+INSERT INTO `users` (`iduser`, `name`, `surname`, `email`, `pass`, `token`, `admin`) VALUES
+(1, 'Admin', 'User', 'admin@admin.com', '$2y$10$xHn/k/qTE8tGr1iSSe3X0OOUbkSnYGTLp7BAuIKFUAb9teWs/Ybxi', '646fc0d751c58050fb1d81ee8f455420', 1),
+(2, 'UserComun', 'Apellido', 'user@comun.com', '$2y$10$hP1MFvzm7SpV6CbZX7GQDekSTWD0GyVtR0eN2icxbLHNM.QfQ0U4a', '80da7e7ce496db405ee6b67d87bf648d', 0);
 
 --
 -- Índices para tablas volcadas
