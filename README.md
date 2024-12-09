@@ -57,3 +57,9 @@ El proyecto se estructura en las siguientes carpetas:
 
 ### Imagen
 ![Diagrama de entidad-relación del proyecto](data/diagrama-entidad-relacion.png)
+
+## Pruebas
+
+Para probar las funcionalidades, puede utilizar los siguientes datos de usuario si no desea crear uno nuevo:
+_User: webadmin@admin.com_
+_Password: admin_
