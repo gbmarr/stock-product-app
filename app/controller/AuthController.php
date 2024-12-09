@@ -70,8 +70,8 @@ class AuthController{
     Metodo de restriccion de acceso a contenido
     de usuario en sesion que no sea de tipo ADMIN */
     function checkAdmin(){
-        if(!isset($_SESSION['admin']) || $_SESSION['admin'] == false){
-            header('Location: ' . BASE_URL . '/');
+        if(!$this->isAdmin()){
+            $this->authError("No tiene permisos para acceder a esta seccion.");
         }
     }
 
@@ -88,7 +88,7 @@ class AuthController{
     /*
     Metodo de carga de datos de email, ID y tipo
     de usuario en sesion */
-    function chargeSession(Object $user){
+    function chargeSession($user){
         $_SESSION['user_id'] = $user->id;
         $_SESSION['email'] = $user->email;
         $_SESSION['admin'] = $user->admin;
@@ -105,7 +105,7 @@ class AuthController{
     Metodo que redirige a vista
     de pantalla de error y muestra mensaje
     enviado por parametro */
-    function authError(String $error){
+    function authError($error){
         $this->view->showError($error);
     }
 }

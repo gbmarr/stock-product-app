@@ -32,12 +32,12 @@ switch ($param[0]){
         break;
     case 'edit':
         // muestra form para editar producto existente
-        $id = isset($param[1]) ? $param[1] : 0;
+        $id = isset($param[1]) ? $param[1] : null;
         isset($id) ? $productController->editProduct($id) : $productController->errorProduct("El producto seleccionado no existe.");
         break;
     case 'update':
         // actualiza el producto editado
-        $id = isset($param[1]) ? $param[1] : 0;
+        $id = isset($param[1]) ? $param[1] : null;
         isset($id) ? $productController->updateProduct($id) : $productController->errorProduct("Error al actualizar el producto, verifique si el mismo existe.");
         break;
     case 'detail':
