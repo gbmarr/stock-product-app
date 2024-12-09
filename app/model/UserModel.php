@@ -16,6 +16,7 @@ class UserModel extends Model{
     Metodo que realiza un INSERT en tabla users. El mismo recibe email y pass
     del nuevo usuario y lo almacena en la DB como nuevo registro de la tabla. */
     function addUser($email, $pass){
+        $pass = password_hash($pass, PASSWORD_BCRYPT);
         $query = "INSERT INTO `users` (`email`, `pass`) VALUES (?, ?)";
         $this->executeQuery($query, [$email, $pass]);
     }
