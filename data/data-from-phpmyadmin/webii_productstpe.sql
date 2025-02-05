@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2024 a las 18:12:40
+-- Tiempo de generación: 05-02-2025 a las 14:04:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,9 +39,11 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`idcat`, `catname`, `catimage`) VALUES
 (1, 'Sin categoría asignada', 'images/imagenPorDefault.jpg'),
-(2, 'Electrónica', 'images/imagenPorDefault.jpg'),
-(3, 'Ropa', 'images/imagenPorDefault.jpg'),
-(4, 'Hogar', 'images/imagenPorDefault.jpg');
+(2, 'Electrónica', 'images/electronica.jpg'),
+(3, 'Hogar', 'images/hogar.jpg'),
+(4, 'Ropa', 'images/ropa.jpg'),
+(5, 'Deportes', 'images/deportes.jpg'),
+(6, 'Juguetes', 'images/juguetes.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,10 +66,16 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`idproduct`, `prodname`, `description`, `idcategory`, `stock`, `price`, `imgproduct`) VALUES
-(1, 'Televisor', 'Televisor LED de 42 pulgadas', 2, 1, 200, 'images/img-tv.jpeg'),
-(2, 'Camiseta', 'Camiseta de algodón 100%', 3, 1, 30, 'images/camiseta.jpeg'),
-(3, 'Sofá', 'Sofá de 3 plazas color gris', 4, 1, 500.1, 'images/sofa.jpeg'),
-(4, 'Auriculares', 'Auriculares con cancelación de ruido', 2, 1, 1500, 'images/auriculares.jpeg');
+(1, 'Televisor', 'SmartTV de 42 pulgadas con pantalla curva...', 1, 1, 200, 'images/television.jpeg'),
+(2, 'Laptop', 'Laptop con procesador Intel i7 y 16GB RAM', 1, 1, 800, 'images/notebook.jpeg'),
+(3, 'Licuadora', 'Licuadora de 600W con 3 velocidades', 2, 1, 50, 'images/licuadora.jpg'),
+(4, 'Sofá', 'Sofá de tres plazas con tapizado de cuero sintético', 2, 1, 350, 'images/sofa.jpeg'),
+(5, 'Camiseta deportiva', 'Camiseta de poliéster transpirable para entrenamientos', 3, 1, 25, 'images/camiseta.jpeg'),
+(6, 'Zapatillas running', 'Zapatillas con tecnología de amortiguación avanzada', 4, 1, 100, 'images/zapatillas.jpeg'),
+(7, 'Pelota de fútbol', 'Balón oficial tamaño 5 de cuero sintético', 4, 1, 30, 'images/pelota.jpg'),
+(8, 'Muñeca interactiva', 'Muñeca que habla y canta, ideal para niños de 3 a 6 años', 5, 1, 40, 'images/muneca.jpg'),
+(9, 'Auto de juguete', 'Auto a control remoto con luces LED', 5, 1, 60, 'images/auto_juguete.jpg'),
+(10, 'Abrigo de invierno', 'Chaqueta térmica impermeable con forro polar', 3, 1, 90, 'images/abrigo.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,13 +132,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `idcat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idcat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `idproduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idproduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
